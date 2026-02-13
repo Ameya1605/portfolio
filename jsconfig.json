@@ -1,0 +1,12 @@
+// @ts-nocheck
+
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowJs": true,
+    "checkJs": false
+  },
+  "include": ["src"]
+}
