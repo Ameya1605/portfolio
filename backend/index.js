@@ -1,3 +1,9 @@
+/* ================= ROOT ROUTE ================= */
+
+app.get("/", (req, res) => {
+  res.send("Portfolio backend is running 🚀");
+});
+
 /* ================= SPAM FILTER ================= */
 
 function isSpam({ name, email, message }) {
