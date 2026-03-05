@@ -47,7 +47,7 @@ export default function Contact() {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 8000);
 
-      const res = await fetch("http://localhost:5000/messages", {
+      const res = await fetch("https://portfolio-grgh.onrender.com/messages", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

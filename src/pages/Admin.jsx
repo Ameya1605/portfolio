@@ -10,9 +10,7 @@ export default function Admin() {
 
   /* ================= FETCH ================= */
 
-const fetchMessages = async () => {
-  try {
-    const res = await fetch("http://localhost:5000/messages");
+const res = await fetch("https://portfolio-grgh.onrender.com/messages");
 
     if (!res.ok) throw new Error("Server error");
 
