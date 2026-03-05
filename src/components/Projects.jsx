@@ -1,75 +1,84 @@
+import { motion } from "framer-motion";
+
 const projects = [
   {
-    title: "AI Bias Detection Extension",
-    desc: "Chrome extension that detects political and media bias using NLP & transformers.",
+    title: "Fake News Detection Browser Extension",
+    subtitle: "Real-Time Content Credibility Analysis",
+    description:
+      "A lightweight browser extension that evaluates online content using NLP-based classification models to detect potential misinformation. Designed to promote responsible media consumption through instant credibility feedback.",
+    github: "https://github.com/Ameya1605/extension-fake-news-detection",
   },
   {
-    title: "Decentralized Escrow Platform",
-    desc: "Blockchain-based freelance escrow with DAO governance.",
-  },
-  {
-    title: "AI Debate Coach",
-    desc: "NLP system that scores arguments, detects fallacies, and suggests counterpoints.",
+    title: "AI-Enhanced Career Guidance System",
+    subtitle: "Personalized Career Pathway Recommendation Engine",
+    description:
+      "An AI-powered system that analyzes user skills, interests, and academic background to generate structured and personalized career pathways. Developed during a national-level hackathon with scalable recommendation architecture.",
+    github: "https://github.com/Ameya1605/TECHNEX-HACK-A-THON-2025",
   },
 ];
 
 export default function Projects() {
-  const handleMouseMove = (e) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-
-    card.style.transform = `
-      perspective(1000px)
-      rotateX(${ -y / 20 }deg)
-      rotateY(${ x / 20 }deg)
-      translateY(-10px)
-    `;
-  };
-
-  const handleMouseLeave = (e) => {
-    e.currentTarget.style.transform = `
-      perspective(1000px)
-      rotateX(0deg)
-      rotateY(0deg)
-      translateY(0px)
-    `;
-  };
-
   return (
-    <section id="projects" className="py-32 px-8">
-      <h2 className="text-5xl font-bold text-center mb-20">
-        <span className="text-pink-400">Projects</span>
-      </h2>
+    <section
+      id="projects"
+      className="min-h-screen px-6 md:px-20 py-40 flex flex-col justify-center"
+    >
+      <div className="max-w-6xl mx-auto text-center">
 
-      <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
-        {projects.map((p, i) => (
-          <div
-            key={i}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            className="
-              group relative bg-white/5 backdrop-blur-xl
-              border border-white/10 rounded-2xl p-8
-              transition-all duration-500
-              hover:border-pink-400
-              hover:shadow-[0_25px_80px_-15px_rgba(236,72,153,0.6)]
-            "
-          >
-            <h3 className="text-2xl font-semibold mb-4 group-hover:text-pink-400 transition">
-              {p.title}
-            </h3>
+        {/* Section Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-5xl md:text-7xl font-bold mb-32"
+        >
+          Selected Work
+        </motion.h2>
 
-            <p className="text-gray-300 leading-relaxed">
-              {p.desc}
-            </p>
+        {/* Cards */}
+        <div className="space-y-32">
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="max-w-4xl mx-auto"
+            >
+              <div className="project-card">
 
-            {/* glow */}
-            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-pink-500/10 blur-2xl -z-10" />
-          </div>
-        ))}
+                {/* Title */}
+                <h3 className="text-3xl md:text-4xl font-semibold mb-4">
+                  {project.title}
+                </h3>
+
+                {/* Subtitle */}
+                <p className="text-pink-400 tracking-wider uppercase text-sm mb-8">
+                  {project.subtitle}
+                </p>
+
+                {/* Description */}
+                <p className="text-gray-400 text-lg leading-relaxed mb-12 max-w-2xl mx-auto">
+                  {project.description}
+                </p>
+
+                {/* Code Link */}
+                <div className="flex justify-center">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lg border-b border-white pb-1 hover:border-pink-400 transition duration-300"
+                  >
+                    View Code →
+                  </a>
+                </div>
+
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
